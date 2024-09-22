@@ -1,0 +1,35 @@
+<h3>Listado De Heroes</h3>
+
+
+<!-- Cuando deseo mostar un template que no existe -->
+<div *ngIf="deleteHero;  Else templatePrueba" >
+  <h3>Héroes Borrado<span class="text-danger">{{ deleteHero }}</span></h3>
+</div>
+
+
+<!-- Div que no existe -->
+<ng-template #templatePrueba>
+  <h3>No se ha Borrado Héroes</h3>
+  <h2>Div que no esxite</h2>
+</ng-template>
+
+
+
+<button *ngIf="heroNames.length > 0; else ResetHero "
+(click)="removeLasHero()" class="btn btn-outline-danger mx-2">
+  Borrar Ultimo Heroes
+</button>
+
+<ng-template #ResetHero>
+  <button (click)="resetHero()" class="btn btn-outline-success">
+    Reset Hero</button>
+</ng-template>
+
+
+
+
+
+
+<ul class="mt-2 list-group">
+  <li *ngFor="let name of heroNames" class="list-group-item">{{ name }}</li>
+</ul>
